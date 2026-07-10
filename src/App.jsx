@@ -12,7 +12,10 @@ function App() {
 
   return (
     <>
- <HomePage />
+      
+      <HomePage />
+     
+
 <Brands/>
 <Careers/> 
 <Footer/>

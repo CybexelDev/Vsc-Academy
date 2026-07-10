@@ -1,4 +1,5 @@
 import React from 'react'
+import StudentExperience from '../Components/StudentsExperience/StudentsExperience'
 import HeroSection from '../Components/Hero'
 import CareerSupportSection from '../Components/AboutUs/CareerSupport'
 import VisionMissionSection from '../Components/AboutUs/Mission'
@@ -11,6 +12,7 @@ function HomePage() {
         <CareerSupportSection />
         <VisionMissionSection />
         <About />
+        <StudentExperience />
     </div>
   )
 }
