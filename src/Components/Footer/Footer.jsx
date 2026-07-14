@@ -1,6 +1,6 @@
 import React from 'react';
-import logo from "../assets/logo.png"
-import footerLogo from "../assets/footer.png"
+import logo from "../../assets/logo.png"
+import footerLogo from "../../assets/footer.png"
 const Footer = () => {
   return (
     <footer className="bg-[#f0f5ff] text-slate-800 font-sans px-6 py-10 md:px-16 md:py-6 manrope rounded-t-5">

@@ -1,8 +1,8 @@
 import React from 'react';
-import bosch from "../assets/bosch.png";
-import infenion from "../assets/infenion.png"
-import visteon from "../assets/visteon.png"
-export default function BrandTicker() {
+import bosch from "../../assets/bosch.png";
+import infenion from "../../assets/infenion.png"
+import visteon from "../../assets/visteon.png"
+export default function Brands() {
   // SVG Brand Assets configured with their specific standard display viewboxes
   const logos = [
     {

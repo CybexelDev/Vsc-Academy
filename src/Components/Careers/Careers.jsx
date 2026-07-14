@@ -1,19 +1,34 @@
 import React, { useState } from 'react';
 import { Star, ChevronDown, RefreshCw, ArrowUpRight } from 'lucide-react';
-import img1 from "../assets/1st.png"
-import img2 from "../assets/2nd.png"
-import img3 from "../assets/3rd.png"
-import img4 from "../assets/4rth.png"
-import img5 from "../assets/5th.jpg"
-import img6 from "../assets/6th.png"
-import img7 from "../assets/7th.png"
-import img8 from "../assets/8th.png"
-import img9 from "../assets/9th.png"
-import img10 from "../assets/10th.jpg"
-import img11 from "../assets/11th.png"
-import img12 from "../assets/12th.jpg"
-import java from "../assets/java.png"
-import python from "../assets/python.png"
+import CourseDetailsModal from './CourseDetailModal';
+import EnquiryModal from './EnquiryModal';
+import img1 from "../../assets/1st.png"
+import img2 from "../../assets/2nd.png"
+import img3 from "../../assets/3rd.png"
+import img4 from "../../assets/4rth.png"
+import img5 from "../../assets/56.png"
+import img6 from "../../assets/66.png"
+import img7 from "../../assets/7th.png"
+import img8 from "../../assets/8th.png"
+import img9 from "../../assets/9th.png"
+import img10 from "../../assets/10th.jpg"
+import img11 from "../../assets/ddd.png"
+import img12 from "../../assets/ds.png"
+import java from "../../assets/java.png"
+import python from "../../assets/python.png"
+import aipdf from "../../assets/doc/AI&MachineLearning.pdf"
+import cpdf from "../../assets/doc/CProgramming.pdf"
+import csharppdf from "../../assets/doc/CsharpProgramming.pdf"
+import cplus from "../../assets/doc/C++Programming.pdf"
+import dataanalysitcs from "../../assets/doc/DataAnalytics.pdf"
+import datascience from "../../assets/doc/DataScience.pdf"
+import embeddedsystem from "../../assets/doc/Embedded Systems (8-bit, 16-bit & 32-bit Controle).pdf"
+import fgpa from "../../assets/doc/FPGA Programming.pdf"
+import javapdf from "../../assets/doc/Java Programming.pdf"
+import pythonpdf from "../../assets/doc/Python Programming.pdf"
+import pythondatascience from "../../assets/doc/Python prgramming with data science.pdf"
+import vlsi from "../../assets/doc/VLSI Programming.pdf"
+
 // Unified mock data reflecting your UI items exactly
 const PROGRAMS_DATA = [
   {
@@ -24,12 +39,13 @@ const PROGRAMS_DATA = [
     duration: '8-12 Weeks',
     rating: 4.9,
     learners: '2.4k learners enrolled',
-    description: 'Learn one of the world\'s most popular programming languages used by leading companies to build...',
+    description: "Learn one of the world's most popular programming languages used by leading companies to build secure, scalable, and high-performance applications. Gain hands-on experience in object-oriented programming, core Java concepts, and real-world project development to prepare for software development careers.",
     badge: 'MOST POPULAR',
     badgeColor: 'bg-[#0056CD] text-white',
     side:"bg-[#0056CD]",
     isHero: true,
-    image:java
+    image:java,
+    pdf:javapdf
   },
   {
     id: 2,
@@ -39,12 +55,13 @@ const PROGRAMS_DATA = [
     duration: '8-12 Weeks',
     rating: 4.8,
     learners: '1.9k learners enrolled',
-    description: 'Master Python from the fundamentals to advanced programming by building real-world applications...',
+    description: "Master Python from fundamentals to advanced programming by building practical applications and solving real-world problems. Learn automation, web development, data analysis, and programming concepts that prepare you for careers in software development, AI, and data science.",
     badge: 'TOP SELLER',
     badgeColor: 'bg-[#3E5F90] text-white',
     side:"bg-[#3E5F90]",
     isHero: true,
-    image:python
+    image:python,
+    pdf:pythonpdf
   },
   {
     id: 3,
@@ -53,7 +70,7 @@ const PROGRAMS_DATA = [
     level: 'Beginner',
     duration: '0-6 Weeks',
     rating: 4.7,
-    description: 'Build a strong foundation in project management by...',
+    description: "Build a strong foundation in project management by preparing for the CAPM® certification with structured guidance, industry best practices, and exam-focused training. Develop the knowledge and confidence required to begin a successful career in project management.",
     isCert: true,
     certColor: 'border-[#00829A]',
     certText: 'CAPM®',
@@ -67,7 +84,7 @@ const PROGRAMS_DATA = [
     level: 'Intermediate',
     duration: '8-12 Weeks',
     rating: 4.0,
-    description: 'Advance your project management career by...',
+    description: "Advance your project management career through comprehensive PMP® certification guidance designed around PMI standards. Strengthen your leadership, planning, risk management, and project execution skills while preparing confidently for the certification exam.",
     isCert: true,
     certColor: 'border-[#4A154B]',
     certText: 'PMP®',
@@ -81,7 +98,7 @@ const PROGRAMS_DATA = [
     level: 'Advanced',
     duration: '12+ Weeks',
     rating: 4.6,
-    description: 'Master Agile principles, Scrum frameworks, Kanban...',
+    description: "Master Agile principles, Scrum frameworks, Kanban, and modern project delivery practices through comprehensive PMI-ACP® certification guidance. Build the skills needed to lead Agile teams and successfully prepare for the PMI-ACP® certification examination.",
     isCert: true,
     certColor: 'border-[#7C5A3E]',
     certText: 'PMI-ACP®',
@@ -95,10 +112,11 @@ const PROGRAMS_DATA = [
     level: 'Intermediate',
     duration: '12+ Weeks',
     rating: 4.6,
-    description: 'Develop in-demand embedded programming skills by...',
+    description: "Master Agile principles, Scrum frameworks, Kanban, and modern project delivery practices through comprehensive PMI-ACP® certification guidance. Build the skills needed to lead Agile teams and successfully prepare for the PMI-ACP® certification examination.",
     iconText: '⚙️',
     iconBg: 'bg-blue-50',
-        image:img4
+        image:img4,
+        pdf:embeddedsystem
   },
   {
     id: 7,
@@ -107,10 +125,11 @@ const PROGRAMS_DATA = [
     level: 'Beginner',
     duration: '12+ Weeks',
     rating: 4.8,
-    description: 'Gain practical expertise in designing, simulating, and programming digital...',
+    description:"Master Agile principles, Scrum frameworks, Kanban, and modern project delivery practices through comprehensive PMI-ACP® certification guidance. Build the skills needed to lead Agile teams and successfully prepare for the PMI-ACP® certification examination.",
     iconText: '📟',
     iconBg: 'bg-gray-50',
-        image:img5
+        image:img5,
+        pdf:fgpa
   },
   {
     id: 8,
@@ -119,10 +138,11 @@ const PROGRAMS_DATA = [
     level: 'Beginner',
     duration: '12+ Weeks',
     rating: 4.9,
-    description: 'Explore the fundamentals of Very Large Scale Integration (VLSI) design through...',
+    description: "Explore the fundamentals of Very Large Scale Integration (VLSI) design through industry-focused training in digital circuit design, HDL programming, simulation, verification, and chip design workflows. Build the technical skills required for careers in semiconductor and integrated circuit design.",
     iconText: '⚡',
     iconBg: 'bg-orange-50',
-        image:img6
+        image:img6,
+        pdf:vlsi
   },
   {
     id: 9,
@@ -131,10 +151,11 @@ const PROGRAMS_DATA = [
     level: 'Beginner',
     duration: '8-12 Weeks',
     rating: 4.8,
-    description: 'Build a strong programming foundation by mastering C, one of the world\'s most...',
+    description: "Build a strong programming foundation by mastering C, one of the world's most widely used programming languages. Learn structured programming, memory management, algorithms, and problem-solving techniques through practical coding exercises and real-world projects.",
     iconText: '🅲',
     iconBg: 'bg-blue-50',
-        image:img7
+        image:img7,
+        pdf:cpdf
   },
   {
     id: 10,
@@ -143,10 +164,11 @@ const PROGRAMS_DATA = [
     level: 'Beginner',
     duration: '8-12 Weeks',
     rating: 4.8,
-    description: 'Learn object-oriented programming concepts and advanced C++ techniques...',
+    description: "Learn object-oriented programming concepts and advanced C++ techniques used in software development, game programming, and system applications. Gain practical experience by building efficient, high-performance applications using industry-standard programming practices.",
     iconText: '🅲🞤🞤',
     iconBg: 'bg-indigo-50',
-        image:img8
+        image:img8,
+        pdf:cplus
   },
   {
     id: 11,
@@ -155,10 +177,11 @@ const PROGRAMS_DATA = [
     level: 'Beginner',
     duration: '8-12 Weeks',
     rating: 4.8,
-    description: 'Master Microsoft\'s C# programming language to develop modern desktop...',
+    description: "Master Microsoft's C# programming language to develop modern desktop, web, and enterprise applications using the .NET platform. Learn object-oriented programming, application development, and database integration while working on practical software projects.",
     iconText: '🎛️',
     iconBg: 'bg-purple-50',
-        image:img9
+        image:img9,
+        pdf:csharppdf
   },
   {
     id: 12,
@@ -167,10 +190,11 @@ const PROGRAMS_DATA = [
     level: 'Beginner',
     duration: '12+ Weeks',
     rating: 4.8,
-    description: 'Discover how intelligent systems are built by learning artificial intelligence, machine...',
+    description: "Discover how intelligent systems are built by learning artificial intelligence, machine learning algorithms, and real-world model development using Python. Gain hands-on experience with industry-standard tools and projects that prepare you for the future of AI-driven technologies.",
     iconText: '🧠',
     iconBg: 'bg-slate-50',
-    image:img10
+    image:img10,
+    pdf:aipdf
   },
   {
     id: 13,
@@ -179,10 +203,11 @@ const PROGRAMS_DATA = [
     level: 'Beginner',
     duration: '8-12 Weeks',
     rating: 4.8,
-    description: 'Transform raw data into meaningful business insights by learning data analysis...',
+    description: "Transform raw data into meaningful business insights by learning data analysis, visualization, SQL, Excel, Power BI, and reporting techniques. Develop practical analytical skills through real-world datasets and projects that support data-driven decision making.",
     iconText: '📊',
     iconBg: 'bg-emerald-50',
-    image:img11
+    image:img11,
+    pdf:dataanalysitcs
   },
   {
     id: 14,
@@ -191,10 +216,11 @@ const PROGRAMS_DATA = [
     level: 'Beginner',
     duration: '12+ Weeks',
     rating: 4.8,
-    description: 'Become a data-driven professional by mastering data analysis, statistics, machine...',
+    description: "Become a data-driven professional by mastering data analysis, statistics, machine learning, and predictive modeling using Python and industry-standard tools. Build practical projects that prepare you for careers in data science, analytics, and artificial intelligence.",
     iconText: '🕸️',
     iconBg: 'bg-cyan-50',
-    image:img12
+    image:img12,
+    pdf:datascience
   }
 ];
 
@@ -205,7 +231,9 @@ const [selectedLevels, setSelectedLevels] = useState([]);
   const [showFilters, setShowFilters] = useState(false);
   const [sortBy, setSortBy] = useState('Most Popular');
   const [mobileVisibleCards, setMobileVisibleCards] = useState(4);
-
+const [selectedProgram, setSelectedProgram] = useState(null);
+const [showCourseModal, setShowCourseModal] = useState(false);
+const [showEnquiryModal, setShowEnquiryModal] = useState(false);
 
 
   const handleCategoryChange = (cat) => {
@@ -379,6 +407,7 @@ certificates recognized by leading global institutions and tech giants.         
     .map((program) => (
       <div
         key={program.id}
+        
         className="relative bg-white rounded-[24px] border border-[#E5E7EB] overflow-hidden
         shadow-[0px_2px_8px_-2px_rgba(0,0,0,0.03),0px_4px_20px_-2px_rgba(0,0,0,0.05)]
         p-5 sm:p-6 lg:p-7 flex flex-col justify-between"
@@ -389,7 +418,10 @@ certificates recognized by leading global institutions and tech giants.         
         />
 
         {/* Top */}
-        <div>
+        <div  onClick={() => {
+    setSelectedProgram(program);
+    setShowCourseModal(true);
+  }}>
           <div className="flex items-start justify-between gap-4">
             <span
               className={`px-3 sm:px-4 py-1 rounded-full text-white text-[11px] sm:text-[12px] font-semibold tracking-[0.6px] ${program.badgeColor}`}
@@ -409,8 +441,11 @@ certificates recognized by leading global institutions and tech giants.         
           </h2>
 
           <p className="mt-4 lg:mt-8 text-[15px] lg:text-[16px] text-[#424655] leading-7 max-w-[520px]">
-            {program.description}
-          </p>
+{
+  program.description.length > 90
+    ? program.description.slice(0, 90) + "..."
+    : program.description
+}          </p>
         </div>
 
         {/* Bottom */}
@@ -441,7 +476,10 @@ certificates recognized by leading global institutions and tech giants.         
           </div>
 
           <button
-            className="w-full sm:w-auto bg-[#0056CD] hover:bg-[#004db3]
+ onClick={() => {
+    setSelectedProgram(program);
+    setShowCourseModal(true);
+  }}            className="w-full sm:w-auto bg-[#0056CD] hover:bg-[#004db3]
             text-white font-semibold rounded-full
             px-6 lg:px-8 py-3 text-[14px]
             shadow-[0_8px_20px_rgba(0,86,205,.25)]"
@@ -452,14 +490,40 @@ certificates recognized by leading global institutions and tech giants.         
       </div>
     ))}
 </div>
+{showCourseModal && selectedProgram && (
+  <CourseDetailsModal
+    title={selectedProgram.title}
+    description={selectedProgram.description}
+    pdf={selectedProgram.pdf}
+    onClose={() => setShowCourseModal(false)}
+    onDownload={() => {
+      setShowCourseModal(false);
+      setShowEnquiryModal(true);
+    }}
+  />
+)}
 
+{showEnquiryModal && selectedProgram && (
+  <EnquiryModal
+    onClose={() => {
+      setShowEnquiryModal(false);
+      setSelectedProgram(null);
+    }}
+    title={selectedProgram.title}
+    description={selectedProgram.description}
+  />
+)}
          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
   {visiblePrograms
     .filter((program) => !program.isHero)
     .map((program) => (
    <div
   key={program.id}
-  className="rounded-[24px] border border-[#E6E7F4] shadow-[0px_2px_8px_-2px_rgba(0,0,0,0.03),0px_4px_20px_-2px_rgba(0,0,0,0.05)]  bg-white"
+onClick={() => {
+    setSelectedProgram(program);
+    setShowCourseModal(true);
+  }}
+    className="rounded-[24px] border border-[#E6E7F4] shadow-[0px_2px_8px_-2px_rgba(0,0,0,0.03),0px_4px_20px_-2px_rgba(0,0,0,0.05)]  bg-white"
 >
   {/* Image - NO PADDING */}
   <div className="bg-[#FAFAFA] rounded-t-[24px]">
@@ -492,7 +556,9 @@ certificates recognized by leading global institutions and tech giants.         
 
     {/* Description */}
     <p className="text-[16px] text-[#424655] leading-[26px]  mb-6">
-      {program.description}
+      {program.description.length > 53
+  ? program.description.slice(0, 53) + "..."
+  : program.description}
     </p>
 
     {/* Footer */}
@@ -502,11 +568,15 @@ certificates recognized by leading global institutions and tech giants.         
         <span className="text-sm font-semibold">{program.rating}</span>
       </div>
 
-      <button className="text-[#0056CD] font-bold text-sm flex items-center gap-1">
+      <button className="text-[#0056CD] font-bold text-sm flex items-center gap-1 cursor-pointer "   onClick={() => {
+    setSelectedProgram(program);
+    setShowEnquiryModal(true);
+  }}>
         Enquiry Now
         <ArrowUpRight className="w-4 h-4" />
       </button>
     </div>
+
   </div>
 </div>
     ))}

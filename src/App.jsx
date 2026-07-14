@@ -3,10 +3,9 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import HomePage from './Pages/HomePage'
-import Navbar from './Components/Navbar'
-import Brands from './Components/Brands'
-import Careers from './Components/Careers'
-import Footer from './Components/Footer'
+import Navbar from './Components/Navbar/Navbar'
+import Brands from './Components/Brands/Brands'
+import Careers from './Components/Careers/Careers'
 
 function App() {
 
@@ -16,9 +15,7 @@ function App() {
       <HomePage />
      
 
-<Brands/>
-<Careers/> 
-<Footer/>
+
     </>
   )
 }

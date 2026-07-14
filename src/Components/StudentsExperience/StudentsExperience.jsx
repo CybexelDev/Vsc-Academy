@@ -37,7 +37,7 @@ const StudentExperience = () => {
 
 
   return (
-    <section className="relative overflow-hidden bg-[#EEF4FB] py-20">
+    <section className="relative overflow-hidden bg-[#EEF4FB] py-20 inter">
       {/* Decorative Circles */}
       <div className="absolute -top-19 right-1 h-38 w-38 rounded-full bg-[#B9C4FF] opacity-70"></div>
       <div className="absolute -bottom-19 left-1 h-38 w-38 rounded-full bg-[#B9C4FF] opacity-70"></div>
@@ -59,41 +59,42 @@ const StudentExperience = () => {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
 
           <div>
-            <p className="mb-2 text-xs font-bold uppercase tracking-wide text-[#2448B8]">
+            <p className="mb-2 text-xs font-medium uppercase tracking-[0px] text-[#2448B8] alexandria">
               Career Growth
             </p>
 
-            <h3 className="text-7xl font-bold text-[#2448B8]">
+            <h3 className="text-7xl font-semibold text-[#1E40AF] sora">
               80<span className="text-[#F59E0B] text-5xl">%</span>
             </h3>
 
-            <div className="mt-4 h-1 w-20 rounded-full bg-[#F59E0B]"></div>
+            <div className="mt-4 h-[6px]  w-20 rounded-full bg-[#F59E0B]"></div>
           </div>
 
           <div>
-            <p className="mb-2 text-xs font-bold uppercase tracking-wide text-[#2448B8]">
+            <p className="mb-2 text-xs font-medium uppercase tracking-[0px] text-[#2448B8] alexandria">
               Average Rating
             </p>
 
-            <h3 className="text-7xl font-bold text-[#2448B8]">
+            <h3 className="text-7xl font-semibold text-[#2448B8] sora">
               4.8
               <span className="text-[#F59E0B] text-4xl"> /5</span>
             </h3>
 
-            <div className="mt-4 h-1 w-20 rounded-full bg-[#F59E0B]"></div>
+            <div className="mt-4 h-[6px] w-20 rounded-full bg-[#F59E0B]"></div>
           </div>
+<div className="flex flex-col items-start md:items-end">
+  <p className="mb-2 text-xs font-medium uppercase text-[#2448B8] alexandria">
+    Placement Assistance
+  </p>
 
-          <div className="md:text-right">
-            <p className="mb-2 text-xs font-bold uppercase tracking-wide text-[#2448B8]">
-              Placement Assistance
-            </p>
+  <div className="inline-flex flex-col items-start">
+    <h3 className="text-7xl font-semibold text-[#2448B8] sora">
+      100<span className="text-[#F59E0B]">%+</span>
+    </h3>
 
-            <h3 className="text-7xl font-bold text-[#2448B8]">
-              100<span className="text-[#F59E0B]">%+</span>
-            </h3>
-
-            <div className="mt-4 ml-auto h-1 w-20 rounded-full bg-[#F59E0B]"></div>
-          </div>
+    <div className="mt-4 h-[6px]  w-20 rounded-full bg-[#F59E0B]"></div>
+  </div>
+</div>
         </div>
 
         {/* Bottom Section */}
