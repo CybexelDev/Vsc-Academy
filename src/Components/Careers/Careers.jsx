@@ -30,7 +30,7 @@ import pythondatascience from "../../assets/doc/Python prgramming with data scie
 import vlsi from "../../assets/doc/VLSI Programming.pdf"
 
 // Unified mock data reflecting your UI items exactly
-const PROGRAMS_DATA = [
+export const PROGRAMS_DATA = [
   {
     id: 1,
     title: 'Java Programming',

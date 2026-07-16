@@ -1,12 +1,25 @@
 import { X, Lock, ArrowRight } from "lucide-react";
+import { useState } from "react";
+import { PROGRAMS_DATA } from "./Careers";
 
 export default function EnquiryModal({   onClose,
   title,
   description, }) {
+    const [formData, setFormData] = useState({
+  name: "",
+  email: "",
+  phone: "",
+  course: "",
+});
+const handleChange = (e) => {
+  setFormData({
+    ...formData,
+    [e.target.name]: e.target.value,
+  });
+};
   return (
-    <div className="fixed inset-0 z-50 bg-black/10 backdrop-blur-[4px] flex items-center justify-center p-4 inter">
-      <div className="relative w-full max-w-[560px] rounded-[22px] bg-white shadow-2xl p-6">
-
+    <div className="fixed inset-0 z-50 bg-black/10 backdrop-blur-[4px] flex items-center justify-center p-3 sm:p-4 inter">
+  <div className="relative w-full max-w-[560px] max-h-[90vh] overflow-y-auto rounded-[22px] bg-white shadow-2xl p-5 sm:p-6">
         {/* Close */}
         <button
           onClick={onClose}
@@ -15,37 +28,36 @@ export default function EnquiryModal({   onClose,
           <X className="w-6 h-6" />
         </button>
 
-        {/* Heading */}
-        <h2 className="text-[24px] font-semibold text-[#4F5EF7] leading-none">
-          Hi, This is VSC Academy
-        </h2>
+   <h2 className="text-[20px] sm:text-[24px] font-semibold text-[#4F5EF7] leading-tight">
+  Hi, This is VSC Academy
+</h2>
 
-        <p className="text-[16px] text-[#111827] mt-1">
-          How may i help you!
-        </p>
+<p className="text-[14px] sm:text-[16px] text-[#111827] mt-1">
+  How may I help you!
+</p>
 
         {/* Course */}
-        <div className="mt-8">
-          <h3 className="text-[24px] font-bold text-[#1F2937] leading-tight">
-            {title}
-          </h3>
+      <div className="mt-6 sm:mt-8">
+  <h3 className="text-[20px] sm:text-[24px] font-bold text-[#1F2937] leading-tight">
+    {title}
+  </h3>
 
-          <p className="mt-[6px] text-[16px] text-[#6B7280] leading-8">
-                       {description}
-
-          </p>
-        </div>
+  <p className="mt-2 text-[14px] sm:text-[16px] text-[#6B7280] leading-6 sm:leading-8">
+    {description}
+  </p>
+</div>
 
         {/* Form */}
-        <div className="mt-5 space-y-5">
-
+<div className="mt-5 space-y-4 sm:space-y-5">
           <div>
-            <label className="block text-sm font-semibold mb-2">
+            <label className="block text-sm font-semibold mb-2" >
               Full Name
             </label>
 
             <input
               type="text"
+                value={formData.name}
+  onChange={handleChange}
               placeholder="e.g. Alex Johnson"
               className="w-full h-14 rounded-xl border bg-[#F5F7FA] border-[#D7DCEC] px-4 outline-none focus:ring-2 focus:ring-[#0056CD]"
             />
@@ -59,12 +71,14 @@ export default function EnquiryModal({   onClose,
             <input
               type="email"
               placeholder="alex@company.com"
+                value={formData.email}
+  onChange={handleChange}
+
               className="w-full h-14 rounded-xl border bg-[#F5F7FA] border-[#D7DCEC] px-4 outline-none focus:ring-2 focus:ring-[#0056CD]"
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-semibold mb-2">
                 Phone Number
@@ -79,6 +93,9 @@ export default function EnquiryModal({   onClose,
                 <input
                   type="text"
                   placeholder="(555) 000-0000"
+                    value={formData.phone}
+  onChange={handleChange}
+
                   className="flex-1 px-3 outline-none bg-[#F5F7FA]"
                 />
               </div>
@@ -89,12 +106,18 @@ export default function EnquiryModal({   onClose,
                 Select Course
               </label>
 
-              <select className="w-full h-14 rounded-xl border bg-[#F5F7FA] border-[#D7DCEC] px-4 outline-none focus:ring-2 focus:ring-[#0056CD]">
-                <option>UI/UX Designing</option>
-                <option>Full Stack Development</option>
-                <option>Data Science</option>
-                <option>Machine Learning</option>
-              </select>
+             <select
+  name="course"
+  className="w-full h-14 rounded-xl border bg-[#F5F7FA] border-[#D7DCEC] px-4 outline-none focus:ring-2 focus:ring-[#0056CD]"
+>
+  <option value="">Select Course</option>
+
+  {PROGRAMS_DATA.map((program) => (
+    <option key={program.id} value={program.title}>
+      {program.title}
+    </option>
+  ))}
+</select>
             </div>
 
           </div>

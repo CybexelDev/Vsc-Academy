@@ -99,7 +99,7 @@ export default function HeroSection() {
 
   {/* CTAs */}
   <div className="flex flex-col sm:flex-row md:flex-col lg:flex-row gap-4 jakarta w-full sm:w-auto">
-
+<a href="#contact">
     <button
       className="
         w-full
@@ -124,6 +124,8 @@ export default function HeroSection() {
     >
       Start Learning Now
     </button>
+    </a>
+<a href="#course">
 
     <button
       className="
@@ -150,6 +152,7 @@ export default function HeroSection() {
     >
       View Syllabus
     </button>
+    </a>
 
   </div>
 

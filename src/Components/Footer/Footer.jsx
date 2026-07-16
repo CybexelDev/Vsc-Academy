@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from "../../assets/logo.png"
 import footerLogo from "../../assets/footer.png"
+
 const Footer = () => {
   return (
     <footer className="bg-[#f0f5ff] text-slate-800 font-sans px-6 py-10 md:px-16 md:py-6 manrope rounded-t-5">
@@ -69,11 +70,11 @@ const Footer = () => {
         <div className="md:col-span-2 ">
           <h3 className="text-[#1d4ed8] font-bold text-sm mb-4 ">Popular Courses</h3>
           <ul className="space-y-2.5 text-xs font-medium text-black poppins">
-            <li><a href="#python" className="hover:text-[#2563eb] transition-colors">Python for data science</a></li>
-            <li><a href="#c" className="hover:text-[#2563eb] transition-colors">C Programming</a></li>
-            <li><a href="#cpp" className="hover:text-[#2563eb] transition-colors">C++ Programming</a></li>
-            <li><a href="#java" className="hover:text-[#2563eb] transition-colors">Java programming</a></li>
-            <li><a href="#embedded" className="hover:text-[#2563eb] transition-colors">Embedded systems</a></li>
+            <li><a   href="#course" className="hover:text-[#2563eb] transition-colors">Python for data science</a></li>
+            <li><a href="#course" className="hover:text-[#2563eb] transition-colors">C Programming</a></li>
+            <li><a href="#course" className="hover:text-[#2563eb] transition-colors">C++ Programming</a></li>
+            <li><a href="#course" className="hover:text-[#2563eb] transition-colors">Java programming</a></li>
+            <li><a href="#course" className="hover:text-[#2563eb] transition-colors">Embedded systems</a></li>
           </ul>
         </div>
 
@@ -84,7 +85,7 @@ const Footer = () => {
             <div className="flex gap-2.5">
               {/* Instagram */}
              <a
-  href="#instagram"
+  href="https://www.instagram.com/venkateshwara_service_center?utm_source=qr&igsh=OGZ6a2FycHhvZHE3"
   className="p-[13px] flex items-center justify-center bg-[#1E40AF] hover:bg-[#1d4ed8] rounded-full transition-colors"
 >
 <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -93,7 +94,7 @@ const Footer = () => {
 
 </a>
               {/* Facebook */}
-              <a href="#facebook" className="p-[13px]  flex items-center justify-center bg-[#1E40AF] hover:bg-[#1d4ed8] text-white rounded-full transition-colors text-sm">
+              <a href="https://www.facebook.com/profile.php?id=61591670217919" className="p-[13px]  flex items-center justify-center bg-[#1E40AF] hover:bg-[#1d4ed8] text-white rounded-full transition-colors text-sm">
 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M11.5 19.888C16.311 19.164 20 15.013 20 10C20 4.477 15.523 0 10 0C4.477 0 0 4.477 0 10C0 15.013 3.689 19.165 8.5 19.888V13H7C6.60218 13 6.22064 12.842 5.93934 12.5607C5.65804 12.2794 5.5 11.8978 5.5 11.5C5.5 11.1022 5.65804 10.7206 5.93934 10.4393C6.22064 10.158 6.60218 10 7 10H8.5V8C8.5 7.07174 8.86875 6.1815 9.52513 5.52513C10.1815 4.86875 11.0717 4.5 12 4.5H12.5C12.8978 4.5 13.2794 4.65804 13.5607 4.93934C13.842 5.22064 14 5.60218 14 6C14 6.39782 13.842 6.77936 13.5607 7.06066C13.2794 7.34196 12.8978 7.5 12.5 7.5H12C11.8674 7.5 11.7402 7.55268 11.6464 7.64645C11.5527 7.74021 11.5 7.86739 11.5 8V10H13C13.3978 10 13.7794 10.158 14.0607 10.4393C14.342 10.7206 14.5 11.1022 14.5 11.5C14.5 11.8978 14.342 12.2794 14.0607 12.5607C13.7794 12.842 13.3978 13 13 13H11.5V19.888Z" fill="white"/>
 </svg>
