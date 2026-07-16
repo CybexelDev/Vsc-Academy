@@ -107,7 +107,7 @@ export const PROGRAMS_DATA = [
   },
   {
     id: 6,
-    title: 'Embedded Systems (8-bit, 16-bit & 32-bit Controller)',
+    title: 'Embedded Systems ',
     categories: ['FPGA Programming'],
     level: 'Intermediate',
     duration: '12+ Weeks',
@@ -385,21 +385,7 @@ certificates recognized by leading global institutions and tech giants.         
             <p className="text-[#424655] font-[400] text-[16px]">
               Showing {filteredPrograms.length}  programs
             </p>
-            <div className="flex items-center gap-2">
-              <span className="text-[#424655] text-[14px]">Sort by:</span>
-              <div className="relative">
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                  className="appearance-none shadow-[0px_2px_8px_-2px_rgba(0,0,0,0.03),0px_4px_20px_-2px_rgba(0,0,0,0.05)] bg-white border border-[#C2C6D8] rounded-full px-6 py-2.5 text-xs font-semibold text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500 cursor-pointer"
-                >
-                  <option>Most Popular</option>
-                  <option>Highest Rated</option>
-                  <option>Newest</option>
-                </select>
-                <ChevronDown className="w-3 h-3 text-gray-500 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
-              </div>
-            </div>
+            
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
   {filteredPrograms

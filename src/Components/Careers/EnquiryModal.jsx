@@ -1,6 +1,7 @@
 import { X, Lock, ArrowRight } from "lucide-react";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { PROGRAMS_DATA } from "./Careers";
+import { toast } from "sonner";
 
 export default function EnquiryModal({   onClose,
   title,
@@ -11,11 +12,81 @@ export default function EnquiryModal({   onClose,
   phone: "",
   course: "",
 });
+useEffect(() => {
+  setFormData((prev) => ({
+    ...prev,
+    course: title || "",
+  }));
+}, [title]);
+const FORMSPREE_URL="https://formspree.io/f/xzdnzqjw"
 const handleChange = (e) => {
   setFormData({
     ...formData,
     [e.target.name]: e.target.value,
   });
+};
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  // Required fields
+  if (!formData.name.trim()) {
+    toast.error("Please enter your full name.");
+    return;
+  }
+
+  if (!formData.email.trim()) {
+    toast.error("Please enter your email address.");
+    return;
+  }
+
+  // Email validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailRegex.test(formData.email)) {
+    toast.error("Please enter a valid email address.");
+    return;
+  }
+
+  // Phone validation
+  const phoneRegex = /^[6-9]\d{9}$/;
+
+  if (!phoneRegex.test(formData.phone)) {
+    toast.error("Please enter a valid 10-digit mobile number.");
+    return;
+  }
+
+  if (!formData.course) {
+    toast.error("Please select a course.");
+    return;
+  }
+
+  try {
+    const response = await fetch(FORMSPREE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      toast.success("Enquiry submitted successfully!");
+
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        course: "",
+      });
+
+      onClose();
+    } else {
+      toast.error("Something went wrong. Please try again.");
+    }
+  } catch (error) {
+    toast.error("Network error. Please try again.");
+  }
 };
   return (
     <div className="fixed inset-0 z-50 bg-black/10 backdrop-blur-[4px] flex items-center justify-center p-3 sm:p-4 inter">
@@ -48,8 +119,10 @@ const handleChange = (e) => {
 </div>
 
         {/* Form */}
-<div className="mt-5 space-y-4 sm:space-y-5">
-          <div>
+<form
+  onSubmit={handleSubmit}
+  className="mt-5 space-y-4 sm:space-y-5"
+>          <div>
             <label className="block text-sm font-semibold mb-2" >
               Full Name
             </label>
@@ -57,6 +130,7 @@ const handleChange = (e) => {
             <input
               type="text"
                 value={formData.name}
+                name="name"
   onChange={handleChange}
               placeholder="e.g. Alex Johnson"
               className="w-full h-14 rounded-xl border bg-[#F5F7FA] border-[#D7DCEC] px-4 outline-none focus:ring-2 focus:ring-[#0056CD]"
@@ -70,6 +144,7 @@ const handleChange = (e) => {
 
             <input
               type="email"
+              name="email"
               placeholder="alex@company.com"
                 value={formData.email}
   onChange={handleChange}
@@ -93,6 +168,7 @@ const handleChange = (e) => {
                 <input
                   type="text"
                   placeholder="(555) 000-0000"
+                  name="phone"
                     value={formData.phone}
   onChange={handleChange}
 
@@ -108,6 +184,8 @@ const handleChange = (e) => {
 
              <select
   name="course"
+    value={formData.course}
+  onChange={handleChange}
   className="w-full h-14 rounded-xl border bg-[#F5F7FA] border-[#D7DCEC] px-4 outline-none focus:ring-2 focus:ring-[#0056CD]"
 >
   <option value="">Select Course</option>
@@ -124,7 +202,7 @@ const handleChange = (e) => {
 
           {/* Button */}
 
-          <button className="w-full h-14 rounded-xl bg-[#006DFF] hover:bg-[#0048ad] text-white font-semibold text-lg flex items-center justify-center gap-2 shadow-lg">
+          <button type="submit" className="w-full h-14 rounded-xl bg-[#006DFF] hover:bg-[#0048ad] text-white font-semibold text-lg flex items-center justify-center gap-2 shadow-lg">
             Submit
             <ArrowRight className="w-5 h-5" />
           </button>
@@ -138,7 +216,7 @@ const handleChange = (e) => {
             Secure and Encrypted transaction
           </div>
 
-        </div>
+        </form>
       </div>
     </div>
   );
