@@ -5,7 +5,7 @@ import {
   FiGlobe,
   FiAward,
 } from "react-icons/fi";
-import img from "../../assets/img/im2.png"
+import img from "../../assets/section.jpg"
 
 const StudentExperience = () => {
   const features = [
